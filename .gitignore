@@ -256,5 +256,4 @@ $RECYCLE.BIN/
 .vscode
 venv/
 unused/
-notebooks/*.csv
-notes.md
+report/
