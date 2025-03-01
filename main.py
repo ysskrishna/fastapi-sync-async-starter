@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.core.database import engine
 from src.models import models
-from src.routers import user_sync
+from src.routers import user_sync, user_async
 
 # create all tables
 models.Base.metadata.create_all(bind=engine)
@@ -22,6 +22,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(user_sync.router)
+app.include_router(user_async.router)
 
 @app.get("/health")
 def health():
