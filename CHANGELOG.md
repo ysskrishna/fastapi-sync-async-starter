@@ -8,16 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-03-09
 
 ### Added
-- Initial project setup with FastAPI framework
-- Dual database access patterns with psycopg2 (sync) and asyncpg (async)
+- Initial project setup with `FastAPI` framework
+- Dual database access patterns with `psycopg2` (sync) and `asyncpg (async)
 - SQLAlchemy 2.0+ ORM with both sync and async session management
-- Comprehensive test suite using pytest with async support
-- Code coverage reporting with pytest-cov
-- HTML test reports via pytest-html
+- Comprehensive test suite using `pytest` with async support
+- Code coverage reporting with `pytest-cov`
+- HTML test reports via `pytest-html`
 - CORS middleware configuration
 - Type validation with Pydantic v2
 - Project documentation and README
 - Structured project layout with src/, tests/, and report/ directories
+- Included sample pytest and coverage reports in media/ directory for reference
 
 
 
