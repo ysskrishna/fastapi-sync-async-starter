@@ -256,5 +256,6 @@ $RECYCLE.BIN/
 .vscode
 venv/
 unused/
+workspace/
 report/*
 !report/.gitkeep

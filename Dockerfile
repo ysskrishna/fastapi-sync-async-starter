@@ -1,5 +1,5 @@
 # Use the official Python image
-FROM python:3.12-slim
+FROM python:3.12-slim as base
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
@@ -30,8 +30,28 @@ RUN poetry install --no-root --only main
 # Copy the rest of the application
 COPY . .
 
+
+# ==========================
+# Testing Stage
+# ==========================
+
+FROM base as test
+
+# Install dev dependencies for testing
+RUN poetry install --with dev
+
+# Default command for test stage
+CMD ["poetry", "run", "pytest"]
+
+
+# ==========================
+# Production Stage
+# ==========================
+
+FROM base as production
+
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Command to run the application
+# Default command to run the production stage
 CMD ["poetry", "run", "python", "main.py"] 

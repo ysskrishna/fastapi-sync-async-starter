@@ -2,12 +2,14 @@ version: '3.8'
 
 services:
   api:
-    build: .
+    build:
+      context: .
+      target: production
     ports:
       - "8000:8000"
     environment:
       DB_HOST: db
-      TEST_DB_HOST: db
+      DB_PORT: 5432
     depends_on:
       - db
     networks:
@@ -25,6 +27,22 @@ services:
       - "5432:5432"
     networks:
       - app-network
+  
+  api-tests:
+    build:
+      context: .
+      target: test
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      TEST_DB_HOST: db
+      TEST_DB_PORT: 5432
+    depends_on:
+      - db  
+    networks:
+      - app-network
+    volumes:
+      - ./report:/app/report
 
 volumes:
   postgres_data:

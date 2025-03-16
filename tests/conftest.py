@@ -1,7 +1,7 @@
-# import os
-# import sys
-# print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import os
+import sys
+# Add the project root directory to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 import asyncio
@@ -71,23 +71,20 @@ def client(db_session):
 # ----------------
 # Asynchronous Fixtures
 # ----------------
-@pytest.fixture(scope="session")
-def event_loop():
-    """Create an instance of the default event loop for each test case."""
-    loop = asyncio.get_event_loop_policy().new_event_loop()
-    yield loop
-    loop.close()
-
-
-@pytest.fixture(scope="session")
-def async_engine():
-    return async_test_engine
+@pytest.fixture(scope="function")
+async def async_engine():
+    engine = create_async_engine(Config.TEST_ASYNC_SQLALCHEMY_DATABASE_URL)
+    yield engine
+    await engine.dispose()
 
 
 @pytest.fixture
-async def async_db_session():
-    async with AsyncTestingSessionLocal() as session:
+async def async_db_session(async_engine):
+    async_session = async_sessionmaker(async_engine, class_=AsyncSession, expire_on_commit=False)
+    async with async_session() as session:
         yield session
+        await session.rollback()
+        await session.close()
 
 
 @pytest.fixture
