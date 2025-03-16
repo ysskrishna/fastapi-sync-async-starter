@@ -31,7 +31,7 @@ A modern Python web application template built with FastAPI, demonstrating sync 
 
 - Python 3.8+
 - PostgreSQL database
-- pip (Python package manager)
+- Poetry (Python package manager)
 
 ## Installation
 
@@ -41,18 +41,10 @@ git clone https://github.com/ysskrishna/fastapi-sync-async-starter
 cd fastapi-sync-async-starter
 ```
 
-2. Create and activate a virtual environment:
+2. Create and activate a virtual environment using Poetry:
 ```bash
-python -m venv venv
-# On Windows
-.\venv\Scripts\activate
-# On Unix or MacOS
-source venv/bin/activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
+# Install dependencies and create virtual environment
+poetry install
 ```
 
 
@@ -60,7 +52,7 @@ pip install -r requirements.txt
 
 Start the FastAPI server:
 ```bash
-python main.py
+poetry run python main.py
 ```
 
 The API will be available at `http://localhost:8000`
@@ -75,17 +67,17 @@ The project includes a comprehensive test suite using pytest. Here are the diffe
 
 ### Run all tests
 ```bash
-pytest
+poetry run pytest
 ```
 
 ### Run tests with cleared cache
 ```bash
-pytest --cache-clear
+poetry run pytest --cache-clear
 ```
 
 ### Run specific test file
 ```bash
-pytest tests/routers/test_async_endpoints.py
+poetry run pytest tests/routers/test_async_endpoints.py
 ```
 
 After running the test suite, detailed reports will be generated in the following locations:
@@ -131,7 +123,8 @@ fastapi-sync-async-starter/
 ├── main.py                       # Application entry point
 ├── pytest.ini                    # Pytest configuration
 ├── README.md                     # Project documentation
-├── requirements.txt              # Project dependencies
+├── pyproject.toml                # Poetry project configuration and dependencies
+├── poetry.lock                   # Poetry lock file for deterministic builds
 └── .env                          # Environment variables
 ```
 
