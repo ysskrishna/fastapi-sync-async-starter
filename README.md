@@ -31,7 +31,7 @@ A modern Python web application template built with FastAPI, demonstrating sync 
 
 - Python 3.8+
 - PostgreSQL database
-- Poetry (Python package manager)
+- Poetry 2.1.1 (Python package manager)
 
 ## Installation
 
