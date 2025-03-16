@@ -1,11 +1,15 @@
 import os
 from dotenv import load_dotenv
+from src.core.utils import is_testing
 
 load_dotenv()
 
 
 
 class Config:
+    ENVIRONMENT = os.getenv("ENVIRONMENT", "production")
+    IS_TESTING = is_testing(ENVIRONMENT)
+
     DB_HOST = os.getenv("DB_HOST")
     DB_PORT = os.getenv("DB_PORT")
     DB_USER = os.getenv("DB_USER")

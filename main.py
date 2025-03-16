@@ -4,9 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.core.database import engine
 from src.models import models
 from src.routers import user_sync, user_async
+from src.core.config import Config
 
-# create all tables
-models.Base.metadata.create_all(bind=engine)
+if not Config.IS_TESTING:
+    # create all tables
+    models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="FastAPI Sync Async Starter", 

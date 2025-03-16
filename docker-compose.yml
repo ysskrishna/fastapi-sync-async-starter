@@ -9,7 +9,6 @@ services:
       - "8000:8000"
     environment:
       DB_HOST: db
-      DB_PORT: 5432
     depends_on:
       - db
     networks:
@@ -33,10 +32,8 @@ services:
       context: .
       target: test
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
+      ENVIRONMENT: test
       TEST_DB_HOST: db
-      TEST_DB_PORT: 5432
     depends_on:
       - db  
     networks:
