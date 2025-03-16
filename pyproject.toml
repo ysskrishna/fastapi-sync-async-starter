@@ -1,6 +1,6 @@
 [project]
 name = "fastapi-sync-async-starter"
-version = "1.0.0"
+version = "1.1.0"
 description = "FastAPI project with sync and async support"
 authors = [
     {name = "ysskrishna",email = "sivasaikrishnassk@gmail.com"}
@@ -8,6 +8,47 @@ authors = [
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.12"
+keywords = [
+    "fastapi",
+    "async",
+    "sync",
+    "api",
+    "starter",
+    "template",
+    "docker",
+    "web-framework",
+    "rest-api",
+    "http",
+    "postgresql",
+    "sqlalchemy",
+    "asyncpg",
+    "database",
+    "boilerplate",
+    "starter-kit",
+    "production-ready",
+    "development",
+    "async-support",
+    "pytest",
+    "testing",
+    "coverage",
+    "containerization",
+    "docker-compose",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: FastAPI",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+
+[project.urls]
+Homepage = "https://github.com/ysskrishna/fastapi-sync-async-starter"
+Documentation = "https://github.com/ysskrishna/fastapi-sync-async-starter#readme"
+Repository = "https://github.com/ysskrishna/fastapi-sync-async-starter.git"
+"Bug Tracker" = "https://github.com/ysskrishna/fastapi-sync-async-starter/issues"
 
 [tool.poetry.dependencies]
 annotated-types = ">=0.7.0"
