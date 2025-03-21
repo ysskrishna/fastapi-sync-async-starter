@@ -9,8 +9,10 @@ services:
       - "8000:8000"
     environment:
       DB_HOST: db
+      REDIS_HOST: redis
     depends_on:
       - db
+      - redis
     networks:
       - app-network
 
@@ -35,6 +37,7 @@ services:
     environment:
       ENVIRONMENT: test
       TEST_DB_HOST: db
+      REDIS_HOST: redis
     depends_on:
       - db  
     networks:
@@ -42,8 +45,18 @@ services:
     volumes:
       - ./report:/app/report
 
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    volumes:
+      - redis_data:/data
+
 volumes:
   postgres_data:
+  redis_data:
 
 networks:
   app-network:
