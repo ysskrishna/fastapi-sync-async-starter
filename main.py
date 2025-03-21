@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.core.database import engine
 from src.models import models
-from src.routers import user_sync, user_async
+from src.routers import user_sync, user_async, rate_limited_sync, rate_limited_async
 from src.core.config import Config
 from src.core.rate_limiter import limiter
 from slowapi import _rate_limit_exceeded_handler
@@ -27,6 +27,8 @@ app.add_middleware(
 # Include routers
 app.include_router(user_sync.router)
 app.include_router(user_async.router)
+app.include_router(rate_limited_sync.router)
+app.include_router(rate_limited_async.router)
 
 # Add the Limiter middleware and exception handler to the app
 app.state.limiter = limiter
