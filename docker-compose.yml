@@ -40,6 +40,7 @@ services:
       REDIS_HOST: redis
     depends_on:
       - db  
+      - redis
     networks:
       - app-network
     volumes:
