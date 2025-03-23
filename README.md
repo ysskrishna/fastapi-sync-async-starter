@@ -1,5 +1,9 @@
 # FastAPI Sync-Async Starter
 
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Poetry](https://img.shields.io/badge/Poetry-2.1.1+-blue.svg)](https://python-poetry.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A modern Python web application template built with FastAPI, demonstrating sync vs async operations using SQLAlchemy 2.0, psycopg2, and asyncpg. Features comprehensive testing with pytest-asyncio and pytest-cov, includes Docker support with multi-stage builds, Poetry for dependency management, and production-ready rate limiting with Redis support.
 
 ## Features
