@@ -28,5 +28,5 @@ def burst_limit(request: Request):
 @limiter.limit("3/minute")
 def slow_endpoint(request: Request):
     # Simulate slow processing
-    time.sleep(5)
+    time.sleep(2)
     return {"message": "This is a slow endpoint"}

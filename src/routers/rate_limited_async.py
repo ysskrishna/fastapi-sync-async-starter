@@ -28,5 +28,5 @@ async def burst_limit(request: Request):
 @limiter.limit("3/minute")
 async def slow_endpoint(request: Request):
     # Simulate slow processing
-    await asyncio.sleep(5)
+    await asyncio.sleep(2)
     return {"message": "This is a slow endpoint"}
