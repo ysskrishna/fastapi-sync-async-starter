@@ -15,7 +15,7 @@ def hello_sync(request: Request):
 
 
 @router.get("/hello/{id}")
-@limiter.limit("10/minute")
+@limiter.shared_limit("10/minute", scope="sync_hello_with_id")
 def hello_sync_with_id(request: Request, id: int):
     return {"message": f"Hello from a synchronous endpoint! {id}"}
 

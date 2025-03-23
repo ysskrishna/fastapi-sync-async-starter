@@ -15,7 +15,7 @@ def hello_async(request: Request):
 
 
 @router.get("/hello/{id}")
-@limiter.limit("10/minute")
+@limiter.shared_limit("10/minute", scope="async_hello_with_id")
 def hello_async_with_id(request: Request, id: int):
     return {"message": f"Hello from an asynchronous endpoint! {id}"}
 
