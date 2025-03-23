@@ -15,15 +15,15 @@ def test_hello_endpoint_rate_limit(client):
 
     # Test rate limit exceeded
     response = client.get("/sync/rate-limited/hello")
-    assert response.status_code == 429  # Too Many Requests
-    assert "Rate limit exceeded" in response.text  # More flexible substring match
+    assert response.status_code == 429
+    assert "Rate limit exceeded" in response.text
 
 def test_hello_with_id_endpoint_rate_limit(client):
     # Test successful requests within limit
     for i in range(10):
-        response = client.get(f"/sync/rate-limited/hello/999")
+        response = client.get(f"/sync/rate-limited/hello/{i}")
         assert response.status_code == 200
-        assert response.json() == {"message": f"Hello from a synchronous endpoint! 999"}
+        assert response.json() == {"message": f"Hello from a synchronous endpoint! {i}"}
 
     # Test rate limit exceeded
     response = client.get("/sync/rate-limited/hello/999")
