@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2024-03-23
+### Added
+- Implemented rate limiting functionality using `slowapi` and `redis` packages
+- Added `REDIS_HOST`, `REDIS_PORT`, `REDIS_DB` environment configuration for redis
+- Added `redis` container in docker compose 
+- Added `rate_limited_sync` and `rate_limited_async` to showcase sample usage of ratelimiting
+- Environment-based Rate limiting configuration with Redis support for production and memory storage for testing 
+- Added rate limiting examples with different patterns:
+  - Basic rate limiting (5 requests/minute)
+  - Shared rate limiting across endpoints
+  - Burst rate limiting (5/minute; 10/hour)
+  - Rate limiting for slow endpoints
+- Added comprehensive test suite for rate limiting functionality
+
+### Changed
+- Updated `media/example_coverage_report` and `media/example_pytest_report` with latest reports
+
+
 ## [1.1.0] - 2024-03-16
 
 ### Added
@@ -44,5 +62,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+[1.2.0]: https://github.com/ysskrishna/fastapi-sync-async-starter/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/ysskrishna/fastapi-sync-async-starter/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ysskrishna/fastapi-sync-async-starter/releases/tag/v1.0.0

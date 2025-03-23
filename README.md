@@ -1,6 +1,6 @@
 # FastAPI Sync-Async Starter
 
-A modern Python web application template built with FastAPI, demonstrating sync vs async operations using SQLAlchemy 2.0, psycopg2, and asyncpg. Features comprehensive testing with pytest-asyncio and pytest-cov, includes Docker support with multi-stage builds and Poetry for dependency management.
+A modern Python web application template built with FastAPI, demonstrating sync vs async operations using SQLAlchemy 2.0, psycopg2, and asyncpg. Features comprehensive testing with pytest-asyncio and pytest-cov, includes Docker support with multi-stage builds, Poetry for dependency management, and production-ready rate limiting with Redis support.
 
 ## Features
 
@@ -31,11 +31,18 @@ A modern Python web application template built with FastAPI, demonstrating sync 
   - Containerized development environment
   - Poetry dependency management
   - Optimized production and test environments
+  - Rate limiting with Redis support:
+    - Basic rate limiting (5 requests/minute)
+    - Shared rate limiting across endpoints
+    - Burst rate limiting (5/minute; 10/hour)
+    - Rate limiting for slow endpoints
+    - Environment-based configuration (Redis for production, memory for testing)
 
 ## Prerequisites
 
 - Python 3.8+
 - PostgreSQL database
+- Redis (for rate limiting in production)
 - Poetry 2.1.1 (Python package manager)
 - Docker and Docker Compose (for containerized development)
 
@@ -65,6 +72,7 @@ docker-compose up --build
 This will:
 - Build the FastAPI application container with multi-stage optimization for development and production
 - Start a PostgreSQL database container with persistent volume
+- Start a Redis container for rate limiting
 - Set up the necessary networks and volumes
 - Initialize the database with the provided schema
 - Run api-tests and generate pytest and coverage reports
@@ -134,7 +142,7 @@ Example reports are available in the repository:
 ```
 fastapi-sync-async-starter/
 ├── src/
-│   ├── core/                     # Core functionality (database, config)
+│   ├── core/                     # Core functionality (database, config, rate limiting)
 │   ├── models/                   # SQLAlchemy models, pydantic schemas
 │   └── routers/                  # API endpoints
 ├── tests/
